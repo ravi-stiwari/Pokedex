@@ -97,7 +97,6 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         do {
             let csv = try CSV(contentsOfURL: path)
             let rows = csv.rows
-            print(rows)
             
             for row in rows {
                 let pokeId = Int(row[POKEDEX_ID_KEY]!)!
@@ -134,7 +133,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             inSearchMode = true
             let lower = searchBar.text!.lowercased()
             
-            filteredPokemon = pokemon.filter({ $0.name.range(of: lower) != nil })
+            filteredPokemon = pokemon.filter({ $0.name.lowercased().range(of: lower) != nil })
             pokeCollectionView.reloadData()
         }
         

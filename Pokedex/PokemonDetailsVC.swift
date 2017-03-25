@@ -27,6 +27,26 @@ class PokemonDetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        pokemon.downloadPokemonDetails {
+            self.updateUI()
+        }
+    }
+    
+    func updateUI() {
+        pokemonHeightLbl.text = pokemon.height
+        pokemonWeightLbl.text = pokemon.weight
+        pokemonDefenseLbl.text = pokemon.defense
+        pokemonImage.image = pokemon.image
+        currentEvolPokemonImage.image = pokemon.image
+        pokemonBaseAttackLbl.text = pokemon.attack
+        pokemonPokedexIdLbl.text = pokemon.pokedexId
+        pokemonNameLbl.text = pokemon.name
+        pokemonTypeLbl.text = pokemon.type
+        pokemonDescLbl.text = pokemon.description
+        pokemonNextEvolImage.isHidden = pokemon.isNextImageEvolutionImageHidden
+        pokemonNextEvolImage.image = pokemon.nextEvolutionImage
+        pokemonEvolLbl.text = pokemon.nextEvolutionDescription
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
